@@ -12,6 +12,118 @@
 
   <!-- Default Theme (see https://docsify.js.org/#/themes) -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <!-- docsify-darklight-theme -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-darklight-theme@3/dist/docsify-theme.min.css">
+  <!-- docsify-themeable: 美觀主題與自訂支援 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css">
+  <!-- TOC 美化與收合自訂樣式 -->
+  <style>
+    .toc-nav {
+      background: #fffbe6;
+      border: 1px solid #ffe58f;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      padding: 14px 18px 10px 18px;
+      margin-bottom: 1.5em;
+      max-width: 340px;
+      position: relative;
+      transition: box-shadow .2s;
+    }
+    .toc-nav h2.toc-title {
+      font-size: 1.1em;
+      margin: 0 0 8px 0;
+      color: #faad14;
+      letter-spacing: 1px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      user-select: none;
+    }
+    .toc-nav ul {
+      display: none;
+      margin-top: 0;
+    }
+    .toc-nav.toc-open ul {
+      display: block;
+    }
+    .toc-nav .toc-toggle-icon {
+      margin-right: 6px;
+      font-size: 1.1em;
+      transition: transform .2s;
+    }
+    .toc-nav.toc-open .toc-toggle-icon {
+      transform: rotate(90deg);
+    }
+  </style>
+  <style>
+  .card-row {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .post-card {
+    display: block;
+    width: 220px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px #0001;
+    text-decoration: none;
+    color: #222;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .post-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 8px 24px #0002;
+  }
+  .post-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 16px 16px 0 0;
+  }
+  .card-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0.8rem 1rem 0.3rem 1rem;
+  }
+  .card-tags {
+    margin: 0 1rem 1rem 1rem;
+    color: #888;
+    font-size: 0.9rem;
+  }
+  .category-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .category-card {
+    display: block;
+    padding: 1rem 2rem;
+    background: linear-gradient(90deg,#ffecd2 0,#fcb69f 100%);
+    border-radius: 12px;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+    box-shadow: 0 2px 8px #0001;
+    transition: box-shadow .2s;
+  }
+  .category-card:hover {
+    box-shadow: 0 4px 16px #0002;
+  }
+  </style>
+
+  <!-- docsify-blog-plugin: 自動文章列表、標籤雲、分類等 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-blog-plugin@1.3.7/dist/docsify-blog.min.js"></script>
+  <!-- docsify-pagination: 上下篇文章導航 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+  <!-- docsify-plugin-front-matter: 支援 front matter 解析 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-plugin-front-matter/dist/docsify-plugin-front-matter.min.js"></script>
+  <!-- docsify-themeable: 主題美化（已引用，保留） -->
+  <!-- 其他常用插件 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
 
 </head>
 
@@ -22,30 +134,193 @@
     // Docsify Configuration (see https://docsify.js.org/#/configuration)
     window.$docsify = {
       name: 'Deep Boring Traveler',
-
-      // Sidebar Configuration
       auto2top: true,
       loadSidebar: true,
       maxLevel: 0,
-      // Set subMaxLevel to 0 to remove automatic display of page table of contents (TOC) in Sidebar
       subMaxLevel: 3,
-
       // Search Plugin Configuration
       search: {
         placeholder: 'Type to search',
         noData: 'No matches found.',
-        // Headline depth, 1 - 6
         depth: 2,
-      }
+      },
+      // Pagination Plugin
+      pagination: {
+        previousText: '上一頁',
+        nextText: '下一頁',
+        crossChapter: true,
+        crossChapterText: true,
+      },
+      // Tabs Plugin
+      tabs: {
+        persist: true,
+        sync: true
+      },
+      // TOC Plugin
+      toc: {
+        tocMaxLevel: 3,
+        target: 'h2, h3, h4'
+      },
+      // Darklight Theme
+      darklightTheme: {
+        siteFont : 'Noto Sans TC, Arial, sans-serif',
+        defaultTheme : 'light',
+        codeFontFamily : 'inherit',
+        bodyFontSize : '17px',
+        dark: {
+          background: '#181a1b',
+          highlightColor: '#e96900',
+        },
+        light: {
+          background: '#fff',
+          highlightColor: '#e96900',
+        }
+      },
+      blog: {
+        // 可根據需求自訂 blog plugin 行為
+        categoryText: '主題分類',
+        tagText: '標籤',
+        postText: '最新遊記',
+        // 更多設定參見官方文件
+      },
+      frontMatter: {
+        // 可自訂 front matter 解析後的行為
+      },
+      search: 'auto',
+      tabs: {
+        persist    : true, // default
+        sync       : true, // default
+        theme      : 'classic',
+        tabComments: true, // default
+        tabHeadings: true // default
+      },
+      copyCode: {
+        buttonText : '複製',
+        errorText  : '錯誤',
+        successText: '已複製!'
+      },
     };
   </script>
 
   <!-- Required -->
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
 
+  <!-- 酷炫插件：旅遊部落格推薦 -->
+  <!-- docsify-share: 社群分享按鈕 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-share/build/index.min.js"></script>
+  <!-- docsify-example-panels: 多欄展示 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-example-panels"></script>
+  <!-- docsify-zoom-image: 圖片點擊放大 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-zoom-image/dist/docsify-zoom-image.min.js"></script>
+  <!-- docsify-gifcontrol: GIF 控制 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-gifcontrol/dist/docsify-gifcontrol.min.js"></script>
+  <!-- docsify-charts: 互動圖表 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-charts/dist/docsify-charts.min.js"></script>
+  <!-- docsify-code-inline-copy: 行內程式碼複製 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-code-inline-copy/dist/docsify-code-inline-copy.min.js"></script>
+  <!-- docsify-plugin-mermaid: 流程圖/時序圖 -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-plugin-mermaid/dist/docsify-plugin-mermaid.min.js"></script>
+  <!-- docsify-comments: Gitalk 留言板（需自訂 clientID/secret） -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/gitalk.min.js"></script>
+  <!-- docsify-pangu: 中英文間距優化 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-pangu/lib/pangu.min.js"></script>
+  <!-- docsify-lazyload-image: 圖片延遲載入 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-lazyload-image/dist/docsify-lazyload-image.min.js"></script>
+
+  <!-- Plugins: 新增推薦插件 -->
+  <!-- docsify-pagination: 上下頁導覽 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+  <!-- docsify-copy-code: 程式碼複製按鈕 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+  <!-- docsify-tabs: 內容分頁 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
+  <!-- docsify-sidebar-collapse: 側邊欄可收合 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+  <!-- docsify-scroll-to-top: 回到頂部按鈕 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-scroll-to-top/dist/docsify-scroll-to-top.min.js"></script>
+  <!-- docsify-plugin-flexible-alerts: 美觀提示框 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-plugin-flexible-alerts"></script>
+  <!-- docsify-search: 強化搜尋 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-plugin-toc@1.3.1/dist/docsify-plugin-toc.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-darklight-theme@3/dist/docsify-theme.min.js"></script>
+
   <!-- Recommended -->
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.js"></script>
+
+  <script>
+    // Gitalk 留言板初始化範例（請自行替換 clientID、clientSecret、repo、owner 等資訊）
+    window.$docsify = Object.assign(window.$docsify || {}, {
+      gitalk: {
+        clientID: 'YOUR_CLIENT_ID',
+        clientSecret: 'YOUR_CLIENT_SECRET',
+        repo: 'YOUR_REPO_NAME',
+        owner: 'YOUR_GITHUB_USERNAME',
+        admin: ['YOUR_GITHUB_USERNAME'],
+        distractionFreeMode: false
+      }
+    });
+  </script>
+
+  <!-- TOC 收合功能腳本 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      function enhanceTOC() {
+        var toc = document.querySelector('.toc-nav');
+        if (!toc) return;
+        // 加入標題與收合按鈕
+        if (!toc.querySelector('.toc-title')) {
+          var title = document.createElement('h2');
+          title.className = 'toc-title';
+          title.innerHTML = '<span class="toc-toggle-icon">▶</span>目錄';
+          toc.insertBefore(title, toc.firstChild);
+        }
+        // 預設收合
+        toc.classList.remove('toc-open');
+        var titleEl = toc.querySelector('.toc-title');
+        titleEl.onclick = function() {
+          toc.classList.toggle('toc-open');
+        };
+      }
+      // 初次渲染
+      setTimeout(enhanceTOC, 500);
+      // Docsify 內容切換後也要執行
+      window.addEventListener('hashchange', function() {
+        setTimeout(enhanceTOC, 500);
+      });
+    });
+  </script>
+
+  <!-- Giscus 留言系統（需設定 repo，以下為範例） -->
+  <script src="https://giscus.app/client.js"
+    data-repo="akiraxtwo/docsify-template"
+    data-repo-id="R_kgDOLvKX2w"
+    data-category="General"
+    data-category-id="DIC_kwDOLvKX2s4Ccv0p"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="light"
+    data-lang="zh-TW"
+    crossorigin="anonymous"
+    async>
+  </script>
+  <script>
+    // Giscus dark mode auto-switch
+    document.addEventListener('darklight-theme-changed', function (event) {
+      const theme = event.detail.isDark ? 'dark' : 'light';
+      const iframe = document.querySelector('iframe.giscus-frame');
+      if (iframe) {
+        iframe.contentWindow.postMessage({ giscus: { setConfig: { theme } } }, 'https://giscus.app');
+      }
+    });
+  </script>
 
 </body>
 </html>

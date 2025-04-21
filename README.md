@@ -1,31 +1,55 @@
-# Docsify Template
+# 潮流旅遊部落格首頁
 
-> A simple [Docsify](https://github.com/docsifyjs/docsify/) template for creating Markdown-based documentation sites, with no build process required.
+<!-- Banner 區 -->
+<img src="assets/banner.jpg" style="width:100%;border-radius:16px;box-shadow:0 4px 16px #0002;margin-bottom:2rem;"/>
 
-## Site Setup
+# 用鏡頭記錄世界，用文字收藏回憶
 
-### Static Webserver
-Upload these template files to any static web server. The file `.nojekyll` is only required if hosting the site on GitHub Pages and otherwise can be removed.
+---
 
-### GitHub Pages
+<!-- 精選遊記卡片區 -->
+<div class="card-row">
+  <a class="post-card" href="#/posts/japan-2024.md">
+    <img src="assets/japan.jpg"/>
+    <div class="card-title">日本 2024 旅遊遊記</div>
+    <div class="card-tags">#美食 #文化</div>
+  </a>
+  <a class="post-card" href="#/posts/tokyo-osaka-7days.md">
+    <img src="assets/tokyo.jpg"/>
+    <div class="card-title">東京大阪7天自由行</div>
+    <div class="card-tags">#自由行 #美景</div>
+  </a>
+  <a class="post-card" href="#/posts/kyushu-tour.md">
+    <img src="assets/kyushu.jpg"/>
+    <div class="card-title">九州深度之旅</div>
+    <div class="card-tags">#溫泉 #自然</div>
+  </a>
+</div>
 
-#### Hosting Site
+---
 
-To host this template on GitHub Pages do the following:  
+<!-- 主題分類區 -->
+## 主題分類
 
-1. Log into GitHub if you have not done so already
-2. Tap the **Use this template** button in the upper-right of this GitHub Repository and choose **Create a new repository**
-3. Enter a name for your new Repository and then tap the **Create repository** button
-4. Once your new Repostitory is created go to **Settings**, then select **Pages** from the left-hand sidebar, and under **Branch** choose **main** and then tap the **Save** button
-5. Wait a minute or two and refresh the same **Pages** page - once your site is ready a message will be displayed at the top of the screen along with a site link and a **Visit site** button
+<div class="category-row">
+  <a class="category-card" href="posts/japan-2024.md">日本</a>
+  <a class="category-card" href="#">韓國</a>
+  <a class="category-card" href="#">歐洲</a>
+</div>
 
-#### Editing Content
+---
 
-How about editing the content of your new Docsify site on GitHub Pages? View the Markdown page you want to edit (for example, **README.md**) and tap the **Pencil Icon**, then save any changes by tapping the green **Commit changes...** button. In just a few moments the Docsify site will be automatically updated to reflect those changes.
+<!-- 最新文章 -->
+## 最新遊記
 
-### Viewing Locally 
-Run `npx serve .` (Node.js users) or `python -m http.server 8000` (Python users) in the repo folder to serve run locally.
+- [日本 2024 旅遊遊記](posts/japan-2024.md) <small>2025-04-21</small>
+- [東京大阪7天自由行](posts/tokyo-osaka-7days.md) <small>2025-03-15</small>
+- [九州深度之旅](posts/kyushu-tour.md) <small>2024-12-10</small>
 
-## Docsify Documentation
+---
 
-To learn more about using Docsify, visit https://docsify.js.org.
+<!-- 關於我 -->
+## 關於我
+
+嗨！我是 Akira，熱愛旅行與攝影，記錄每一段旅程的美好。  
+[Instagram](#) | [YouTube](#) | [Facebook](#)

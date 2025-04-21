@@ -6,6 +6,10 @@
 ---
 
 ## 目的地
+- 日本行程
+  - [大阪京都六日遊](posts/japan-2024.md)
+  - [東京大阪七日遊](posts/tokyo-osaka-7days.md)
+  - [九州南端五日遊](posts/kyushu-tour.md)
 - [日本 2024](posts/japan-2024)
 
 ## 其他
